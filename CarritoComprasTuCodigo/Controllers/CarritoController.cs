@@ -13,6 +13,7 @@ namespace CarritoComprasTuCodigo.Controllers
         // GET: /Carrito/
         private CarritoBDEntities ce = new CarritoBDEntities();
 
+
         [HttpPost]
         public JsonResult AgregaCarrito(int id, int cantidad)
         {

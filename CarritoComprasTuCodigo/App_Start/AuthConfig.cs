@@ -23,8 +23,8 @@ namespace CarritoComprasTuCodigo
             //    consumerSecret: "");
 
             OAuthWebSecurity.RegisterFacebookClient(
-                appId: "559184974274230",
-                appSecret: "fe92c2add8e9caac269fd6786a079b22");
+                appId: "tuid",
+                appSecret: "appsecret");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
