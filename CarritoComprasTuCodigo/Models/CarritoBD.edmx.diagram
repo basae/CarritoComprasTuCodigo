@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69fa039c94e64f528c9121998e685b1e" Name="Diagrama1">
+        <EntityTypeShape EntityType="CarritoBDModel.Categoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarritoBDModel.ListaVenta" Width="1.5" PointX="5.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarritoBDModel.Producto" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarritoBDModel.Venta" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="CarritoBDModel.FK__Producto__Catego__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="CarritoBDModel.FK__ListaVent__Produ__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="CarritoBDModel.FK__ListaVent__Venta__173876EA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CarritoBDModel.UserProfile" Width="1.5" PointX="10.811323267785516" PointY="8.5119855294525557" />
+        <EntityTypeShape EntityType="CarritoBDModel.webpages_Membership" Width="1.5" PointX="2.7637304397130991" PointY="19.890370378219696" />
+        <EntityTypeShape EntityType="CarritoBDModel.webpages_OAuthMembership" Width="1.5" PointX="5.1817268976856621" PointY="16.397529728895766" />
+        <EntityTypeShape EntityType="CarritoBDModel.webpages_Roles" Width="1.5" PointX="7.375" PointY="1.125" />
+        <AssociationConnector Association="CarritoBDModel.webpages_UsersInRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

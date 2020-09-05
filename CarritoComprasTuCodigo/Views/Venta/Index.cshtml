@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model IEnumerable<CarritoComprasTuCodigo.Models.Venta>
+<h2>Ventas del Dia</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha de Venta</th>
+            <th>SubTotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach(var venta in Model)
+            {
+                <tr>
+                    <td>@venta.Id</td>
+                    <td>@venta.DiaVenta</td>
+                    <td>@String.Format("{0:C}",venta.Subtotal)</td>
+                    <td>@String.Format("{0:C}",venta.Iva)</td>
+                    <td>@String.Format("{0:C}",venta.Total)</td>
+                    <th>@Html.ActionLink("Detalles","Detalles","Venta",new {Id=@venta.Id},null)</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

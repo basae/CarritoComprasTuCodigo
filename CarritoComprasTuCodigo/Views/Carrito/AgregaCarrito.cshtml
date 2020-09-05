@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "AgregaCarrito";
+}
+<h2>Mi Carrito</h2>
+
+<table>
+    <thead>
+        <trt>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th></th>
+        </trt>
+    </thead>
+    <tbody>
+        @{
+            double total=0;
+        }
+        @if (Session["carrito"] != null)
+        {
+            foreach (var item in Session["carrito"] as List<CarritoComprasTuCodigo.Models.CarritoItem>)
+            {
+                total+=(double)(item.Cantidad*item.Producto.Precio);
+                <tr>
+                    <td>@item.Producto.Id</td>
+                    <td>@item.Producto.Nombre</td>
+                    <td>@String.Format("{0:C}",item.Producto.Precio)</td>
+                    <td>@item.Cantidad</td>
+                    <td>@String.Format("{0:C}",(item.Cantidad*item.Producto.Precio))</td>
+                    <td>@Html.ActionLink("Eliminar","Delete","Carrito",new { Id=item.Producto.Id },null)</td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4">Total</th>
+            <th>@String.Format("{0:C}",total)</th>
+        </tr>
+    </tfoot>
+</table>
+@Html.ActionLink("Seguir Comprando","Index","Producto",null,null) | @Html.ActionLink("Terminar Compra","FinalizaCompra","Carrito",null,null)

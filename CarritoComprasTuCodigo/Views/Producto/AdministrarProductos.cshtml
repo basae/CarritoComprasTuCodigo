@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "AdministrarProductos";
+}
+
+<h2>Administrar Productos</h2>
+@if (Model != null)
+{
+    <table class="table table-condensed tbl_product">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nombre</td>
+                    <td>@string.Format("{0:C}", item.Precio)</td>                   
+                    <td class="text-center">
+                        <a href="@Url.Action("EditProduct","Producto",new { id = item.Id })" class="agregar" title="editar"><span class="glyphicon glyphicon-edit"></span> </a>
+                        <a href="@Url.Action("Delete","Producto",new { id=item.Id })" class="agregar" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

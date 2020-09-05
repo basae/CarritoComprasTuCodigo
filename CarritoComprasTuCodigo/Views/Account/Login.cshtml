@@ -1,0 +1,77 @@
+﻿@model CarritoComprasTuCodigo.Models.LoginModel
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+<h2>Utilice una cuenta local para iniciar sesión.</h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Formulario de inicio de sesión</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Iniciar sesión" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Regístrese", "Register") si no tiene ninguna cuenta.
+    </p>
+}
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>Usar otro servicio para iniciar sesión.</h2>
+    @*@Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })*@
+    <div id="fb-root"></div>    
+    <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width="" onlogin="checkLoginState" ></div>
+    <div class="hidden">
+        @using (Html.BeginForm("ExternalLoginConfirmationCustom", "Account", new { ReturnUrl = "" }, FormMethod.Post,new { @id="frm1" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="text" name="UserName" id="UserName2" value="" />
+            <input type="text" name="ExternalLoginData" id="ExternalLoginData" value="" />
+
+        }
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v7.0&appId=559184974274230&autoLogAppEvents=1"></script>
+<script>
+  function checkLoginState() {
+      FB.getLoginStatus(function (response) {
+          var token = response.authResponse.userID;
+          FB.api('/me', function (response) {
+              console.log('Success ');
+              console.log(response);
+              $("#UserName2").val(response.name);
+              $("#ExternalLoginData").val("Facebook|"+token);
+              $("#frm1").submit();
+             
+          });
+      });
+  }
+</script>
+}

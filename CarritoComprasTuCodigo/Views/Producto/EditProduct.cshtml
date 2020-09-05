@@ -1,0 +1,43 @@
+﻿@using CarritoComprasTuCodigo.Models;
+@model Producto
+@{
+    ViewBag.Title = "EditProduct";
+    
+}
+<a href="@Url.Action("AdministrarProductos")"><< Regresar</a>
+<br />
+<h2>Modificar Producto</h2>
+@using (Html.BeginForm("EditProduct", "Producto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{    
+    @Html.HiddenFor(Model => Model.Id, new { @disabled = "disabled", @class = "form-control" })
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            
+            <div class="form-group">
+                <label>Name</label>
+                @Html.TextBoxFor(Model => Model.Nombre, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+
+                @Html.DropDownListFor(Model => Model.CategoriaId, (IEnumerable<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                @Html.TextBoxFor(Model => Model.Precio, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="FileImg" id="FileImg" />
+            </div>
+            <button type="submit" class="btn btn-default">Modificar</button>
+        </div>
+        
+        
+            <div class="col-sm-4 text-center">
+                <img src="data:image/jpg;base64,@ViewBag.Base64Img" width="100%" />
+            </div>
+        
+    </div>
+
+}
